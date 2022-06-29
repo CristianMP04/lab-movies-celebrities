@@ -12,15 +12,15 @@ router.get("/celebrities/create", (req, res) => {
     res.render("celebrities/new-celebrity.hbs");
 });
 
-router.post("celebrities/create", (req, res, next) => {
-    const {name, occupation, catchPhrase } = req.params;
+router.post("/celebrities/create", (req, res, next) => {
+    const {name, occupation, catchPhrase } = req.body;
     Celebrity.create({name, occupation, catchPhrase})
-    .then(() => res.redirect('/celebrities'))
+    .then((celebrity) => res.redirect('/celebrities'))
     .catch(error => res.redirect('celebrities/new-celebrity'));
   });
 
   
-  router.get("/celebrities/celebrities", (req, res) => {
+  router.get("/celebrities", (req, res) => {
           Celebrity
           .find()
           .then(celebrityFromApi => {

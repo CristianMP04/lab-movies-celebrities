@@ -8,7 +8,7 @@ const celibritySchema = new mongoose.Schema({
       type: String
     },
     catchPhrase: {
-      type: [String]
+      type: String
     }
 });
 
